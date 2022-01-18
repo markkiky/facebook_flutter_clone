@@ -1,7 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_responsive_ui/models/models.dart';
-import 'package:path/path.dart';
+import 'widgets.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class CreatePostContainer extends StatelessWidget {
   final User currentUser;
@@ -18,12 +18,7 @@ class CreatePostContainer extends StatelessWidget {
         children: [
           Row(
             children: [
-              CircleAvatar(
-                radius: 20.0,
-                backgroundColor: Colors.grey[200],
-                backgroundImage:
-                    CachedNetworkImageProvider(currentUser.imageUrl),
-              ),
+              ProfileAvatar(imageUrl: currentUser.imageUrl),
               SizedBox(
                 width: 8.0,
               ),
@@ -32,7 +27,7 @@ class CreatePostContainer extends StatelessWidget {
                   decoration: InputDecoration.collapsed(
                       hintText: "What\'s on your mind"),
                 ),
-              )
+              ),
             ],
           ),
           Divider(
@@ -45,7 +40,7 @@ class CreatePostContainer extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 TextButton(
-                  onPressed: () => print("VideoCam"),
+                  onPressed: () => toast("Live"),
                   child: Row(
                     children: [
                       Icon(
@@ -56,7 +51,7 @@ class CreatePostContainer extends StatelessWidget {
                       Text(
                         "Live",
                         style: TextStyle(color: Colors.black),
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -64,7 +59,7 @@ class CreatePostContainer extends StatelessWidget {
                   width: 8.0,
                 ),
                 TextButton(
-                  onPressed: () => print("VideoCam"),
+                  onPressed: () => toast("Video Cam"),
                   child: Row(
                     children: [
                       Icon(
@@ -75,7 +70,7 @@ class CreatePostContainer extends StatelessWidget {
                       Text(
                         "Photo",
                         style: TextStyle(color: Colors.black),
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -83,7 +78,7 @@ class CreatePostContainer extends StatelessWidget {
                   width: 8.0,
                 ),
                 TextButton(
-                  onPressed: () => print("Room"),
+                  onPressed: () => toast("Room"),
                   child: Row(
                     children: [
                       Icon(
@@ -92,9 +87,9 @@ class CreatePostContainer extends StatelessWidget {
                       ),
                       SizedBox(width: 2.0),
                       Text(
-                        "Live",
+                        "Room",
                         style: TextStyle(color: Colors.black),
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -104,5 +99,9 @@ class CreatePostContainer extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  toast(message) {
+    Fluttertoast.showToast(msg: message);
   }
 }

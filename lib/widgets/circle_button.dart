@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class CircleButton extends StatelessWidget {
   final IconData icon;
   final double iconSize;
-  final VoidCallback onPressed;
+  final Function() onPressed;
 
   const CircleButton(
       {Key? key,
